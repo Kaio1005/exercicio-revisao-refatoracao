@@ -5,24 +5,35 @@
 #include <string>
 
 class Empregado {
-	
-  public:
+  protected:
     double salarioHora;  
-    double quotaMensalVendas;  
+    std::string nome;
+    double horasTrabalhadas;
 
+  public: 
+    const double HORAS_POR_DIA = 8;
 
-    double pagamentoMes(double horasTrabalhadas) {
- 
-      double t = horasTrabalhadas;
-	  
-	  //Cálculo de hora extra (+50% se horasTrabalhadas > 8)
-      if (horasTrabalhadas > 8) {
-        double x = horasTrabalhadas - 8;
-        t += x / 2;
-      }
-	  return t * salarioHora;
+    std::string getName (){
+      return this -> nome;
     }
-	
+    void setName(std::string name){
+      this -> nome = name;
+    }
+    double getSalarioHora (){
+      return this -> salarioHora; 
+    }
+    void setSalarioHora (double salario){
+      this -> salarioHora = salario;
+    }
+    double getHorasTrabalhadas (){
+      return this -> horasTrabalhadas; 
+    }
+    void setHorasTrabalhadas (double horas){
+      this -> horasTrabalhadas = horas;
+    }
+    virtual double salarioMes() const;
+
+    virtual ~Empregado(){};
 };
 
 #endif
